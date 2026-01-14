@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DigitalCraft - Premium Digital Services</title>
+    <style>
+      /* ---------- 1. SLIDE SHELL ---------- */
+.carousel-slide {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ---------- 2. EXTRA DARK LAYER (white text insurance) ---------- */
+.carousel-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.70);   /* plain dark veil */
+  z-index: 1;
+}
+
+/* ---------- 3. CONTENT WRAPPER ---------- */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+/* ---------- 4. TEXT BLOCK – pure white on near-black ---------- */
+.hero-text {
+  color: #ffffff;                   /* pure white text */
+  background: rgba(10, 25, 47, 0.82); /* deep navy tint, not full black */
+  padding: 3rem 3.5rem;
+  border-radius: 12px;
+  max-width: 620px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  font: #ffffff;
+}
+
+/* ---------- 5. TYPOGRAPHY – bigger, bolder, brighter ---------- */
+.hero-text h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hero-text p {
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  line-height: 1.65;
+  margin: 0 0 2.2rem;
+  opacity: 0.92;
+  color: #ffffff;
+}
+
+/* ---------- 6. BUTTONS – white text on teal ---------- */
+.cta-button,
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #00f5d4;      /* brand teal */
+  color: #0a192f;           /* deep navy text */
+  padding: 0.9rem 2.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.cta-button:hover,
+.whatsapp-button:hover {
+  background: #00dcb9;
+}
+
+/* ---------- 7. MOBILE ---------- */
+@media (max-width: 768px) {
+  .hero-text {
+    padding: 2rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #1d1d1f;
+        background-color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Animation Keyframes */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      /* Enhanced Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Navigation - Apple Style */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 88px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 600;
+        color: #1d1d1f;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #1d1d1f;
+        font-size: 14px;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        opacity: 0.8;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        opacity: 1;
+        color: #0071e3;
+        transform: translateY(-2px);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #0071e3;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 8px;
+        background: none;
+        border: none;
+        transition: transform 0.3s ease;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 2px;
+        background: #1d1d1f;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 88px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 88px);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 999;
+        padding: 40px;
+        box-sizing: border-box;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu.active {
+        display: block;
+        transform: translateY(0);
+      }
+
+      .mobile-menu ul {
+        list-style: none;
+        text-align: center;
+      }
+
+      .mobile-menu li {
+        margin: 24px 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu.active li {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .mobile-menu.active li:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .mobile-menu.active li:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      .mobile-menu.active li:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .mobile-menu.active li:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+      .mobile-menu.active li:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: #1d1d1f;
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .mobile-menu a:hover {
+        color: #0071e3;
+      }
+
+      /* Enhanced WhatsApp Button */
+      .whatsapp-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 32px;
+        background: #25d366;
+        color: white;
+        text-decoration: none;
+        border-radius: 980px;
+        font-size: 17px;
+        font-weight: 400;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .whatsapp-button:hover {
+        background: #128c7e;
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+      }
+
+      .whatsapp-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .whatsapp-button:hover::before {
+        left: 100%;
+      }
+
+      .whatsapp-icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        transition: transform 0.3s ease;
+      }
+
+      .whatsapp-button:hover .whatsapp-icon {
+        transform: scale(1.1);
+      }
+
+      /* Enhanced Floating WhatsApp Button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: #25d366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        text-decoration: none;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .whatsapp-float:hover {
+        background: #128c7e;
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        animation-play-state: paused;
+      }
+
+      .whatsapp-float svg {
+        width: 28px;
+        height: 28px;
+        fill: currentColor;
+        transition: transform 0.3s ease;
+      }
+
+      .whatsapp-float:hover svg {
+        transform: scale(1.2);
+      }
+
+      /* Hero Carousel Section */
+      .hero {
+        margin-top: 88px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 40px;
+      }
+
+      .carousel-slide {
+        display: none;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        animation: slideInLeft 0.8s ease-out;
+      }
+
+      .carousel-slide.active {
+        display: grid;
+      }
+
+      .carousel-slide:nth-child(even) {
+        animation: slideInRight 0.8s ease-out;
+      }
+
+      .hero-text {
+        text-align: left;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        font-weight: 600;
+        line-height: 1.05;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: white;
+        animation: slideInLeft 0.8s ease-out 0.3s both;
+      }
+
+      .hero p {
+        font-size: 24px;
+        color: #ffffff;
+        margin-bottom: 40px;
+        font-weight: 400;
+        animation: slideInLeft 0.8s ease-out 0.4s both;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        animation: scaleIn 0.8s ease-out 0.2s both;
+        transition: transform 0.3s ease;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-image-1 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .carousel-image-2 {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      .carousel-image-3 {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      .carousel-image-4 {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      }
+
+      .carousel-image-5 {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      }
+
+      .carousel-controls {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 10;
+      }
+
+      .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .carousel-dot.active {
+        background: #00f5d4;
+        transform: scale(1.2);
+        border-color: white;
+      }
+
+      .carousel-dot:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .carousel-nav:hover {
+        background: white;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .carousel-prev {
+        left: 20px;
+      }
+
+      .carousel-next {
+        right: 20px;
+      }
+
+      .carousel-nav svg {
+        width: 20px;
+        height: 20px;
+        fill: #1d1d1f;
+      }
+
+      .cta-button {
+        animation: slideInLeft 0.8s ease-out 0.5s both;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .hero-whatsapp {
+        margin-top: 24px;
+        animation: slideInLeft 0.8s ease-out 0.6s both;
+      }
+
+      /* Enhanced Section Styles */
+      .section {
+        padding: 120px 0;
+        position: relative;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .section-title {
+        font-size: 56px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 80px;
+        color: #1d1d1f;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      /* Enhanced About Section */
+      .about {
+        background: #fff;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .about-text h3 {
+        font-size: 32px;
+        margin-bottom: 24px;
+        color: #1d1d1f;
+        animation: slideInLeft 0.8s ease-out;
+      }
+
+      .about-text p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #6e6e73;
+        margin-bottom: 24px;
+        animation: slideInLeft 0.8s ease-out 0.1s both;
+      }
+
+      .about-image {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        animation: scaleIn 0.8s ease-out 0.2s both;
+        transition: transform 0.3s ease;
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .about-image:hover {
+        transform: scale(1.02);
+      }
+
+      /* Enhanced Vision Mission Values Section */
+      .vmv {
+        background: #f5f5f7;
+      }
+
+      .vmv-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .vmv-card {
+        background: #fff;
+        padding: 48px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: scaleIn 0.8s ease-out;
+      }
+
+      .vmv-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .vmv-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 24px;
+        background: linear-gradient(135deg, #0071e3 0%, #00f5d4 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 28px;
+        animation: scaleIn 0.6s ease-out 0.2s both;
+        transition: transform 0.3s ease;
+      }
+
+      .vmv-card:hover .vmv-icon {
+        transform: rotate(360deg) scale(1.1);
+      }
+
+      .vmv-card h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #1d1d1f;
+        animation: fadeInUp 0.6s ease-out 0.3s both;
+      }
+
+      .vmv-card p {
+        font-size: 16px;
+        color: #6e6e73;
+        line-height: 1.6;
+        animation: fadeInUp 0.6s ease-out 0.4s both;
+      }
+
+      /* Enhanced Services Section */
+      .services {
+        background: #fff;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .service-card {
+        background: #f5f5f7;
+        padding: 48px;
+        border-radius: 20px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+        animation: scaleIn 0.8s ease-out;
+      }
+
+      .service-card:hover {
+        background: #fff;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px) scale(1.02);
+      }
+
+      .service-image {
+        width: 100%;
+        height: 200px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        overflow: hidden;
+        position: relative;
+        animation: fadeInUp 0.6s ease-out;
+        transition: transform 0.3s ease;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .service-card:hover .service-image img {
+        transform: scale(1.1);
+      }
+
+      .service-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 113, 227, 0.1) 0%,
+          rgba(0, 245, 212, 0.1) 100%
+        );
+        z-index: 1;
+        transition: opacity 0.3s ease;
+      }
+
+      .service-card:hover .service-image::before {
+        opacity: 0;
+      }
+
+      .service-card h3 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #1d1d1f;
+        animation: fadeInUp 0.6s ease-out 0.1s both;
+      }
+
+      .service-card p {
+        font-size: 18px;
+        color: #6e6e73;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        animation: fadeInUp 0.6s ease-out 0.2s both;
+      }
+
+      .service-features {
+        list-style: none;
+        margin-top: 24px;
+      }
+
+      .service-features li {
+        padding: 8px 0;
+        color: #6e6e73;
+        font-size: 16px;
+        position: relative;
+        padding-left: 24px;
+        animation: fadeInUp 0.6s ease-out;
+        transition: transform 0.3s ease;
+      }
+
+      .service-features li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #0071e3;
+        font-weight: 600;
+      }
+
+      .service-card:hover .service-features li {
+        transform: translateX(5px);
+      }
+
+      .service-whatsapp {
+        margin-top: 32px;
+        text-align: center;
+        animation: fadeInUp 0.6s ease-out 0.3s both;
+      }
+
+      /* Enhanced Contact Section */
+      .contact {
+        background: #f5f5f7;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      .contact-info h3 {
+        font-size: 32px;
+        margin-bottom: 24px;
+        color: #1d1d1f;
+        animation: slideInLeft 0.8s ease-out;
+      }
+
+      .contact-item {
+        margin-bottom: 24px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        animation: slideInLeft 0.8s ease-out;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-item:hover {
+        transform: translateX(10px);
+      }
+
+      .contact-icon {
+        width: 24px;
+        height: 24px;
+        fill: #0071e3;
+        flex-shrink: 0;
+        margin-top: 2px;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-item:hover .contact-icon {
+        transform: scale(1.2);
+      }
+
+      .contact-item h4 {
+        font-size: 18px;
+        color: #1d1d1f;
+        margin-bottom: 4px;
+      }
+
+      .contact-item p {
+        font-size: 16px;
+        color: #6e6e73;
+      }
+
+      .contact-form {
+        background: #fff;
+        padding: 48px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        animation: slideInRight 0.8s ease-out;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 16px;
+        color: #1d1d1f;
+        margin-bottom: 8px;
+        font-weight: 500;
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #d2d2d7;
+        border-radius: 12px;
+        font-size: 16px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #0071e3;
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 16px;
+        background: #0071e3;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 17px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: fadeInUp 0.6s ease-out 0.2s both;
+      }
+
+      .submit-button:hover {
+        background: #0077ed;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+      }
+
+      .contact-whatsapp {
+        margin-top: 32px;
+        text-align: center;
+        animation: fadeInUp 0.6s ease-out 0.3s both;
+      }
+
+      /* Enhanced Footer */
+      footer {
+        background: #1d1d1f;
+        color: #f5f5f7;
+        padding: 64px 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #86868b;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .footer-links a:hover {
+        color: #f5f5f7;
+        transform: translateY(-2px);
+      }
+
+      .footer-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #f5f5f7;
+        transition: width 0.3s ease;
+      }
+
+      .footer-links a:hover::after {
+        width: 100%;
+      }
+
+      .footer-bottom {
+        color: #86868b;
+        font-size: 14px;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid #424245;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* Enhanced Social Media Icons */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+
+      .social-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        background: #424245;
+        color: #f5f5f7;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-icon:hover {
+        transform: translateY(-4px) scale(1.1);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .social-icon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+      }
+
+      .social-icon:hover::before {
+        transform: scale(1.2);
+      }
+
+      .social-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        position: relative;
+        z-index: 1;
+        transition: transform 0.3s ease;
+      }
+
+      .social-icon:hover svg {
+        transform: scale(1.2);
+      }
+
+      /* Social Media Brand Colors */
+      .social-icon.instagram:hover {
+        background: linear-gradient(
+          45deg,
+          #f09433 0%,
+          #e6683c 25%,
+          #dc2743 50%,
+          #cc2366 75%,
+          #bc1888 100%
+        );
+      }
+
+      .social-icon.whatsapp:hover {
+        background: #25d366;
+      }
+
+      .social-icon.facebook:hover {
+        background: #1877f2;
+      }
+
+      .social-icon.x:hover {
+        background: #000000;
+      }
+
+      .social-icon.github:hover {
+        background: #333333;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .carousel-slide {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 48px;
+          color: #ffffff;
+        }
+
+        .hero p {
+          font-size: 20px;
+        }
+
+        .hero-image {
+          height: 300px;
+        }
+
+        .carousel-nav {
+          width: 40px;
+          height: 40px;
+        }
+
+        .carousel-prev {
+          left: 10px;
+        }
+
+        .carousel-next {
+          right: 10px;
+        }
+
+        .about-content,
+        .contact-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .vmv-grid,
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title {
+          font-size: 40px;
+        }
+
+        .whatsapp-button {
+          padding: 14px 24px;
+          font-size: 16px;
+        }
+
+        .whatsapp-float {
+          width: 50px;
+          height: 50px;
+          bottom: 20px;
+          right: 20px;
+        }
+
+        .whatsapp-float svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        .social-icons {
+          gap: 16px;
+        }
+
+        .social-icon {
+          width: 44px;
+          height: 44px;
+        }
+
+        .social-icon svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    </style>
+    <base target="_blank" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">DigitalCraft</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#vmv">Our Values</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#vmv">Our Values</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/+260975487259"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+        />
+      </svg>
+    </a>
+
+<!-- Hero Carousel Section -->
+<section id="home" class="hero">
+  <div class="carousel-container">
+    <!-- Slide 1: Web Development -->
+    <div class="carousel-slide active" style="background-image: url('DD.jpg');">
+      <div class="slide-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text slide-in-left">
+          <h1 style="color:#ffffff; margin:0; line-height:1.15; letter-spacing:-0.5px;">
+  Digital Excellence<br />Redefined
+</h1>
+          <p>
+            Transform your business with premium web solutions, stunning
+            designs, and strategic digital marketing.
+          </p>
+          <a href="#contact" class="cta-button">Start Your Project</a>
+          <div class="hero-whatsapp">
+            <a
+              href="https://wa.me/+260975487259"
+              class="whatsapp-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                />
+              </svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Creative Design -->
+    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80');">
+      <div class="slide-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text slide-in-right">
+          <h1>Creative Design<br />Solutions</h1>
+          <p>
+            Transform your brand with stunning visual experiences that capture
+            attention and drive engagement.
+          </p>
+          <a href="#services" class="cta-button">Explore Services</a>
+          <div class="hero-whatsapp">
+            <a
+              href="https://wa.me/+260975487259"
+              class="whatsapp-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                />
+              </svg>
+              Get Design Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Digital Marketing -->
+    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+      <div class="slide-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text slide-in-left">
+          <h1>Digital Marketing<br />Excellence</h1>
+          <p>
+            Boost your online presence with data-driven strategies that
+            deliver measurable results and ROI.
+          </p>
+          <a href="#contact" class="cta-button">Start Campaign</a>
+          <div class="hero-whatsapp">
+            <a
+              href="https://wa.me/+260975487259"
+              class="whatsapp-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                />
+              </svg>
+              Marketing Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: GIS Services -->
+    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');">
+      <div class="slide-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text slide-in-right">
+          <h1>GIS & Geospatial<br />Solutions</h1>
+          <p>
+            Advanced mapping and spatial analysis to unlock location
+            intelligence for your business decisions.
+          </p>
+          <a href="#services" class="cta-button">Explore GIS Services</a>
+          <div class="hero-whatsapp">
+            <a
+              href="https://wa.me/+260975487259"
+              class="whatsapp-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                />
+              </svg>
+              Discuss GIS Project
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Data Analytics -->
+    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+      <div class="slide-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text slide-in-left">
+          <h1>Data Analytics &<br />Visualization</h1>
+          <p>
+            Transform complex data into actionable insights with interactive
+            dashboards and advanced analytics.
+          </p>
+          <a href="#services" class="cta-button">Explore Analytics</a>
+          <div class="hero-whatsapp">
+            <a
+              href="https://wa.me/+260975487259"
+              class="whatsapp-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                />
+              </svg>
+              Analytics Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-nav carousel-prev" onclick="changeSlide(-1)">
+      <svg viewBox="0 0 24 24">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+      </svg>
+    </button>
+    <button class="carousel-nav carousel-next" onclick="changeSlide(1)">
+      <svg viewBox="0 0 24 24">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
+    </button>
+
+    <!-- Carousel Dots -->
+    <div class="carousel-controls">
+      <div class="carousel-dot active" onclick="currentSlide(1)"></div>
+      <div class="carousel-dot" onclick="currentSlide(2)"></div>
+      <div class="carousel-dot" onclick="currentSlide(3)"></div>
+      <div class="carousel-dot" onclick="currentSlide(4)"></div>
+      <div class="carousel-dot" onclick="currentSlide(5)"></div>
+    </div>
+  </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+      <div class="container">
+        <h2 class="section-title fade-in">About DigitalCraft</h2>
+        <div class="about-content">
+          <div class="about-text slide-in-left">
+            <h3>We Craft Digital Experiences That Matter</h3>
+            <p>
+              At DigitalCraft, we believe in the power of exceptional digital
+              experiences. Our team of creative professionals combines technical
+              expertise with artistic vision to deliver solutions that not only
+              look stunning but drive real business results.
+            </p>
+            <p>
+              With years of experience in web development, design, GIS, data
+              analytics, and digital marketing, we've helped countless
+              businesses establish their digital presence and achieve their
+              goals. We don't just build websites – we create digital ecosystems
+              that work for you.
+            </p>
+            <div style="margin-top: 32px">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Let's Discuss Your Project
+              </a>
+            </div>
+          </div>
+          <div class="about-image scale-in">
+            <img
+              src="me.jpg"
+              alt="DigitalCraft Team"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision Mission Values Section -->
+    <section id="vmv" class="section vmv">
+      <div class="container">
+        <h2 class="section-title fade-in">Our Foundation</h2>
+        <div class="vmv-grid">
+          <div class="vmv-card scale-in">
+            <div class="vmv-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+              </svg>
+            </div>
+            <h3>Vision</h3>
+            <p>
+              To be the leading digital craft agency that empowers businesses
+              worldwide through innovative technology and creative excellence.
+            </p>
+          </div>
+          <div class="vmv-card scale-in">
+            <div class="vmv-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+            </div>
+            <h3>Mission</h3>
+            <p>
+              To deliver exceptional digital solutions that transform
+              businesses, inspire audiences, and create lasting value through
+              creativity, innovation, and strategic thinking.
+            </p>
+          </div>
+          <div class="vmv-card scale-in">
+            <div class="vmv-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                />
+              </svg>
+            </div>
+            <h3>Core Values</h3>
+            <p>
+              • Excellence<br/> • Innovation<br/> • Integrity<br/> • Collaboration<br/> • Client
+              Success <br/>• Continuous Learning
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+      <div class="container">
+        <h2 class="section-title fade-in">Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card scale-in">
+            <div class="service-image" style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+              <img
+                src="WD.jpg"
+                alt="Web Development"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+            </div>
+            <h3>Web Design & Development</h3>
+            <p>
+              Custom websites that combine stunning design with powerful
+              functionality to deliver exceptional user experiences.
+            </p>
+            <ul class="service-features">
+              <li>Responsive Web Design</li>
+              <li>E-commerce Solutions</li>
+              <li>CMS Development</li>
+              <li>Performance Optimization</li>
+              <li>SEO Integration</li>
+            </ul>
+            <div class="service-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Get a Quote
+              </a>
+            </div>
+          </div>
+          <div class="service-card scale-in">
+            <div class="service-image" style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+              <img
+                src="GD.jpg"
+                alt="Graphic Design"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+            </div>
+            <h3>Graphic Design</h3>
+            <p>
+              Visual storytelling that captures your brand essence and
+              communicates your message with impact.
+            </p>
+            <ul class="service-features">
+              <li>Brand Identity Design</li>
+              <li>Logo & Visual Systems</li>
+              <li>Marketing Materials</li>
+              <li>Digital Illustrations</li>
+              <li>Print Design</li>
+            </ul>
+            <div class="service-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Discuss Design Needs
+              </a>
+            </div>
+          </div>
+          <div class="service-card scale-in">
+            <div class="service-image" style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+              <img
+                src="DM.jpg"
+                alt="Digital Marketing"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+            </div>
+            <h3>Digital Marketing</h3>
+            <p>
+              Strategic marketing solutions that drive traffic, engagement, and
+              conversions across digital channels.
+            </p>
+            <ul class="service-features">
+              <li>Social Media Marketing</li>
+              <li>Content Strategy</li>
+              <li>Email Marketing</li>
+              <li>PPC Campaigns</li>
+              <li>Analytics & Reporting</li>
+            </ul>
+            <div class="service-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Plan Marketing Strategy
+              </a>
+            </div>
+          </div>
+          <div class="service-card scale-in">
+            <div class="service-image" style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+              <img
+                src="GEO.jfif"
+                alt="GIS Services"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+            </div>
+            <h3>GIS & Geospatial Solutions</h3>
+            <p>
+              Advanced mapping and spatial analysis to unlock location
+              intelligence for your business decisions.
+            </p>
+            <ul class="service-features">
+              <li>Spatial Data Analysis</li>
+              <li>Interactive Mapping</li>
+              <li>Location Intelligence</li>
+              <li>Remote Sensing</li>
+              <li>Cartographic Design</li>
+            </ul>
+            <div class="service-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Discuss GIS Project
+              </a>
+            </div>
+          </div>
+          <div class="service-card scale-in">
+            <div class="service-image" style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+              <img
+                src="DV.JPEG"
+                alt="Data Analytics"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+            </div>
+            <h3>Data Analytics & Visualization</h3>
+            <p>
+              Transform complex data into actionable insights with interactive
+              dashboards and advanced analytics.
+            </p>
+            <ul class="service-features">
+              <li>Interactive Dashboards</li>
+              <li>Business Intelligence</li>
+              <li>Data Mining & ML</li>
+              <li>Real-time Analytics</li>
+              <li>Custom Reports</li>
+            </ul>
+            <div class="service-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Analytics Consultation
+              </a>
+            </div>
+          </div>
+          <div class="service-card scale-in">
+            <div class="service-image" style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+              <img
+                src="ge.png"
+                alt="Google Earth Engine"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+            </div>
+            <h3>Google Earth Engine</h3>
+            <p>
+              Harness the power of cloud-based geospatial analysis for
+              environmental monitoring and land use analysis.
+            </p>
+            <ul class="service-features">
+              <li>Remote Sensing Analysis</li>
+              <li>Land Use Classification</li>
+              <li>Environmental Monitoring</li>
+              <li>Change Detection</li>
+              <li>Custom GEE Scripts</li>
+            </ul>
+            <div class="service-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Discuss GEE Project
+              </a>
+            </div>
+          </div>
+          <div class="service-card scale-in">
+            <div class="service-image" style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem;">
+              <img
+                src="P.jpg"
+                alt="Programming Lessons"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+            </div>
+            <h3>Programming Lessons</h3>
+            <p>
+              Comprehensive coding education that empowers individuals and teams
+              with in-demand tech skills.
+            </p>
+            <ul class="service-features">
+              <li>One-on-One Tutoring</li>
+              <li>Group Workshops</li>
+              <li>Corporate Training</li>
+              <li>Online Courses</li>
+              <li>Project-Based Learning</li>
+            </ul>
+            <div class="service-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Book a Lesson
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2 class="section-title fade-in">Let's Create Together</h2>
+        <div class="contact-content">
+          <div class="contact-info slide-in-left">
+            <h3>Get In Touch</h3>
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                />
+              </svg>
+              <div>
+                <h4>Email</h4>
+                <p>collinslamba89@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24">
+                <path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                />
+              </svg>
+              <div>
+                <h4>Phone</h4>
+                <p>+260 (975) 487-259</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                />
+              </svg>
+              <div>
+                <h4>Address</h4>
+                <p>Plot 107-2nd St. Natwange East, Ndeke Village Kitwe<br />P.O.Box 100101, Zambia</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24">
+                <path
+                  d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                />
+              </svg>
+              <div>
+                <h4>Business Hours</h4>
+                <p>
+                  Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 10:00 AM -
+                  4:00 PM
+                </p>
+              </div>
+            </div>
+            <div class="contact-whatsapp">
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Quick WhatsApp Chat
+              </a>
+            </div>
+          </div>
+          <div class="contact-form slide-in-right">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="service">Service Interest</label>
+                <select id="service" name="service" required>
+                  <option value="">Select a service</option>
+                  <option value="web-design">Web Design & Development</option>
+                  <option value="graphic-design">Graphic Design</option>
+                  <option value="digital-marketing">Digital Marketing</option>
+                  <option value="gis">GIS & Geospatial Solutions</option>
+                  <option value="data-analytics">
+                    Data Analytics & Visualization
+                  </option>
+                  <option value="google-earth-engine">
+                    Google Earth Engine
+                  </option>
+                  <option value="programming">Programming Lessons</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="submit-button">Send Message</button>
+            </form>
+            <div class="contact-whatsapp">
+              <p style="color: #6e6e73; margin-bottom: 16px">
+                Prefer instant messaging?
+              </p>
+              <a
+                href="https://wa.me/+260975487259"
+                class="whatsapp-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                  />
+                </svg>
+                Message Us on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="social-icons">
+          <!-- Instagram -->
+          <a
+            href="https://instagram.com/digitalcraft"
+            class="social-icon instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Follow us on Instagram"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+
+          <!-- WhatsApp -->
+          <a
+            href="https://wa.me/+260975487259"
+            class="social-icon whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Chat on WhatsApp"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+              />
+            </svg>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://facebook.com/digitalcraft"
+            class="social-icon facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Like us on Facebook"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+          </a>
+
+          <!-- X (Twitter) -->
+          <a
+            href="https://x.com/digitalcraft"
+            class="social-icon x"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Follow us on X"
+          >
+            <svg viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/digitalcraft"
+            class="social-icon github"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Check our GitHub"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 DigitalCraft. All rights reserved. Crafted with passion
+            for digital excellence.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Carousel functionality
+      let currentSlideIndex = 0;
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".carousel-dot");
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove("active");
+          slide.style.display = "none";
+          if (i === index) {
+            slide.classList.add("active");
+            slide.style.display = "grid";
+          }
+        });
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+      }
+
+      function changeSlide(direction) {
+        currentSlideIndex += direction;
+
+        if (currentSlideIndex >= slides.length) {
+          currentSlideIndex = 0;
+        } else if (currentSlideIndex < 0) {
+          currentSlideIndex = slides.length - 1;
+        }
+
+        showSlide(currentSlideIndex);
+      }
+
+      function currentSlide(index) {
+        currentSlideIndex = index - 1;
+        showSlide(currentSlideIndex);
+      }
+
+      // Auto-play carousel
+      setInterval(() => {
+        changeSlide(1);
+      }, 5000);
+
+      // Hamburger Menu Toggle
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking on links
+      document.querySelectorAll(".mobile-menu a").forEach((link) => {
+        link.addEventListener("click", function () {
+          hamburger.classList.remove("active");
+          mobileMenu.classList.remove("active");
+        });
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Enhanced Navbar background on scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+          navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+        } else {
+          navbar.style.background = "rgba(255, 255, 255, 0.8)";
+          navbar.style.boxShadow = "none";
+        }
+      });
+
+      // Enhanced Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(
+          ".fade-in, .slide-in-left, .slide-in-right, .scale-in"
+        )
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Enhanced Form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+
+          // Here you would typically send the data to your server
+          console.log("Form submitted with data:", data);
+
+          // Show success message
+          alert(
+            "Thank you for your message! We'll get back to you within 24 hours."
+          );
+
+          // Reset form
+          this.reset();
+        });
+
+      // Enhanced hover effects
+      document.querySelectorAll(".service-card, .vmv-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-8px) scale(1.02)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
+        });
+      });
+
+      // Auto-generate WhatsApp links with pre-filled messages
+      function generateWhatsAppLink(message) {
+        const phoneNumber = "+260975487259"; // Replace with your WhatsApp number
+        const encodedMessage = encodeURIComponent(message);
+        return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      }
+
+      // Add click handlers for WhatsApp buttons with custom messages
+      document.querySelectorAll(".whatsapp-button").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          // You can customize the message based on context
+          const currentSection = this.closest("section").id;
+          let message = "Hi! I'm interested in your digital services.";
+
+          switch (currentSection) {
+            case "home":
+              const slideTitle = this.closest(".carousel-slide")
+                .querySelector("h1")
+                .textContent.replace(/\n/g, " ");
+              message = `Hi! I'm interested in ${slideTitle}. Can we discuss my project?`;
+              break;
+            case "about":
+              message =
+                "Hi! I read about DigitalCraft and I'm interested in discussing a potential project. When would be a good time to chat?";
+              break;
+            case "services":
+              const serviceTitle =
+                this.closest(".service-card").querySelector("h3").textContent;
+              message = `Hi! I'm interested in your ${serviceTitle} services. Can we discuss my requirements and get a quote?`;
+              break;
+            case "contact":
+              message =
+                "Hi! I have some questions about your services. Can we chat?";
+              break;
+          }
+
+          this.href = generateWhatsAppLink(message);
+        });
+      });
+    </script>
+  </body>
+</html>
